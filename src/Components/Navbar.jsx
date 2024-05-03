@@ -1,15 +1,29 @@
 import React, { useState } from "react";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { items } from "./Data";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import Select from "react-select";
-
-const Navbar = ({ setData, cart }) => {
+import { getAuth, signOut } from "firebase/auth";
+import { app } from "../firebase";
+const auth = getAuth(app);
+const Navbar = ({ setData, cart, userName, isLogin, setLogin }) => {
   // console.log(useLocation())
   const location = useLocation();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
 
+  // SIGNOUT FUNCTION  
+  const SignOut = () => {
+    signOut(auth)
+      .then(() => {
+        setLogin(false);
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
   // const sortedByAsc = () => {
   //   const sortedProducts = items.sort((a, b) => a.id - b.id);
   //   // const element = items.filter((product)=>{product.sort((a, b) => a.price - b.price)})
@@ -62,7 +76,22 @@ const Navbar = ({ setData, cart }) => {
               placeholder="Search Products"
             />
           </form>
+          {isLogin ? <span id="user">{userName}</span> : "Username"}
+          <div className="list-inline-item">
+            {!isLogin ? (
+              <Link to={"/signIn"}>
+                <button className="btn btn-success my1" id="login">Login</button>
+              </Link>
+            ) : (
+              <Link>
+                <button className="btn btn-success my1" onClick={SignOut}>
+                  SignOut
+                </button>
+              </Link>
+            )}
+          </div>
 
+         
           <Link to={"/cart"} className="cart">
             <button type="button" className="btn btn-primary position-relative">
               <BsFillCartCheckFill style={{ fontSize: "1.5rem" }} />
