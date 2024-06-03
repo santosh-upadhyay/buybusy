@@ -3,10 +3,10 @@ import Contact from "./Contact";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Pagination from './Pagination';
 const Product = ({ items, cart, setCart }) => {
   const[add,setAdd] = useState(0);
-
+  const [page,setPage] = useState(1);
   const addToCart = (id, price, title, description, imgSrc) => {
     const obj = {
       id,
@@ -54,7 +54,7 @@ const Product = ({ items, cart, setCart }) => {
       />
       <div className="container">
         <div className="row">
-          {items.map((product) => {
+          {items.slice(page*10-10,page*10).map((product) => {
             return (
               <>
                 <div className="col-sm-4"
@@ -107,7 +107,8 @@ const Product = ({ items, cart, setCart }) => {
           })}
         </div>
       </div>
-      <Contact/>
+      <Pagination products={items} setPpage={setPage} />
+      {/* <Contact/> */}
     </>
   );
 };

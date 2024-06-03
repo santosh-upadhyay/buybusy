@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { items } from './Data';
 import Product from './Product';
+import Pagination from './Pagination.jsx'
 
 const SearchItem = ({cart, setCart}) => {
   // console.log(useParams())
@@ -22,7 +23,11 @@ const SearchItem = ({cart, setCart}) => {
 
 
   return (
-   <Product cart={cart} setCart={setCart} items={filterData} />
+    <>
+    <Product cart={cart} setCart={setCart} items={filterData} />
+    {/* <Pagination products={filterData}/> */}
+    </>
+   
   )
 }
 
