@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Pagination from './Pagination';
 const Product = ({ items, cart, setCart }) => {
-  const[add,setAdd] = useState(0);
+  // const[add,setAdd] = useState(0);
   const [page,setPage] = useState(1);
   const addToCart = (id, price, title, description, imgSrc) => {
     const obj = {
@@ -80,6 +80,7 @@ const Product = ({ items, cart, setCart }) => {
                       <h5 className="card-title">{product.title}</h5>
                       <p className="card-text">{product.description}</p>
                       <button className="btn btn-primary mx-3">
+               
                         {product.price} ₹
                       </button>
                       <button
@@ -91,7 +92,7 @@ const Product = ({ items, cart, setCart }) => {
                             product.description,
                             product.imgSrc
                           )
-                          setAdd(add+1)
+                          // setAdd(add+1)
                         }
                       }
                       // disabled={add>0}
@@ -107,8 +108,8 @@ const Product = ({ items, cart, setCart }) => {
           })}
         </div>
       </div>
-      <Pagination products={items} setPpage={setPage} />
-      {/* <Contact/> */}
+      <Pagination products={items} page={page} setPpage={setPage} />
+      {location.pathname == "/" &&(<Contact/>)}
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { GiShoppingCart } from "react-icons/gi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { items } from "./Data";
 import { BsFillCartCheckFill } from "react-icons/bs";
@@ -8,8 +8,8 @@ import { getAuth, signOut } from "firebase/auth";
 import { app } from "../firebase";
 const auth = getAuth(app);
 const Navbar = ({ setData, cart, userName, isLogin, setLogin }) => {
-  // console.log(useLocation())
-  const location = useLocation();
+
+  const Location = useLocation();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -95,15 +95,16 @@ const Navbar = ({ setData, cart, userName, isLogin, setLogin }) => {
           <Link to={"/cart"} className="cart">
             <button type="button" className="btn btn-primary position-relative">
               <BsFillCartCheckFill style={{ fontSize: "1.5rem" }} />
+              {/* <GiShoppingCart style={{ fontSize: "1.5rem" }}/> */}
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {cart.length}
-                <span className="visually-hidden">unread messages</span>
+                <span className="visually-hidden">Cart</span>
               </span>
             </button>
           </Link>
         </div>
 
-        {location.pathname == "/" && (
+        {Location.pathname == "/" && (
           <div className="nav-bar-wrapper">
             <div className="items">Filter by {"->"}</div>
             <div onClick={() => setData(items)} className="items">

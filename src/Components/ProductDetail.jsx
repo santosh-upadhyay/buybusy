@@ -43,21 +43,21 @@ const ProductDetail = ({ cart, setCart }) => {
     // }
     setCart([...cart, obj]);
     // console.log("Cart element = ", cart);
-    toast.success("Item added on cart", {
-      position: "top-right",
-      autoClose: 1500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+    // toast.success("Item added on cart", {
+    //   position: "top-right",
+    //   autoClose: 1500,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    //   theme: "dark",
+    // });
   };
 
   return (
     <>
-      <ToastContainer
+      {/* <ToastContainer
         position="top-right"
         autoClose={1500}
         hideProgressBar={false}
@@ -68,7 +68,7 @@ const ProductDetail = ({ cart, setCart }) => {
         draggable
         pauseOnHover
         theme="dark"
-      />
+      /> */}
       <div className="container con">
         <div className="img">
           <img src={product.imgSrc} alt="" />

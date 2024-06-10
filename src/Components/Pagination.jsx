@@ -1,13 +1,13 @@
 import './santi.css'
 import {useEffect, useState} from 'react'
-function Pagination({products,setPpage}) {
-  const [page, setpage] = useState(1);
+function Pagination({products,page,setPpage}) {
+  // const [page, setpage] = useState(1);
   
   const selectPageHandler=(selectedPage)=>{
-    if(selectedPage>=1 && selectedPage<=products.length/10 && selectedPage!==page)
-               setpage(selectedPage)
+    if(selectedPage>=1 && selectedPage<=Math.ceil(products.length/10) && selectedPage!==page)
+              //  setpage(selectedPage)
               setPpage(selectedPage)
-
+             
   }
   
   return (
@@ -17,7 +17,7 @@ function Pagination({products,setPpage}) {
         products.length>0 && <div className='pagination'>
         <span className={page > 1 ? "" : "pagination__disable"} onClick={() => selectPageHandler(page - 1)}> -</span>
         {
-          [...Array(parseInt(products.length/10))].map((r,i)=>{
+          [...Array(Math.ceil(products.length/10))].map((r,i)=>{
             return <span className={page===i+1 ?"pagination__selected":""} onClick={() => selectPageHandler(i + 1)}>{i + 1}</span>
           })
         }
