@@ -41,20 +41,20 @@ const ProductDetail = ({ cart, setCart,isLogin }) => {
     // if(ans){
     //   setCart([...cart, obj]);
     // }
-    // if(isLogin)
+    if(isLogin)
     setCart([...cart, obj]);
-  // else{
-  //   toast.success("Need To Login First", {
-  //     position: "top-right",
-  //     autoClose: 1500,
-  //     hideProgressBar: false,
-  //     closeOnClick: true,
-  //     pauseOnHover: true,
-  //     draggable: true,
-  //     progress: undefined,
-  //     theme: "dark",
-  //   });
-  // }
+  else{
+    toast.success("Need To Login First", {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
     // console.log("Cart element = ", cart);
   };
 
