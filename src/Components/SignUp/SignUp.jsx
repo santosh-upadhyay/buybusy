@@ -58,7 +58,7 @@ const SignUp = () => {
       <h3>SignUp</h3>
       <form onSubmit={handleSubmit}>
         <input className="sys" type="text" placeholder="Name" name="name" value={formField.name} onChange={onChangeField}/>
-        <br />
+        <br/>
         <input className="sys" type="email" name="email" placeholder="Enter email" value={formField.email} onChange={onChangeField} />
         <br />
         <input className="sys" type="password" name="Password" value={formField.Password} onChange={onChangeField} placeholder="Password"/>

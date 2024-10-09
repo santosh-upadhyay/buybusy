@@ -36,7 +36,7 @@ const Navbar = ({ setData, cart, userName, isLogin, setLogin }) => {
   // console.slog("sajda");
   const filterByCategory = (category) => {
     const element = items.filter((product) => product.category === category);
-    console.log(element);
+    // console.log(element);
     setData(element);
   };
 
@@ -76,7 +76,7 @@ const Navbar = ({ setData, cart, userName, isLogin, setLogin }) => {
               placeholder="Search Products"
             />
           </form>
-          {isLogin ? <span id="user">{userName}</span> : "Username"}
+          {isLogin ? <span id="user">{userName}</span> : ""}
           <div className="list-inline-item">
             {!isLogin ? (
               <Link to={"/signIn"}>

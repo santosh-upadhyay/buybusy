@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style123.css";
 import { Link, useNavigate } from "react-router-dom";
-import { Password } from "@mui/icons-material";
+// import { Password } from "@mui/icons-material";
 import { getAuth, signInWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { app } from "../../firebase";
 
@@ -25,7 +25,7 @@ const SignIn = () => {
         const user = userCredential.user;
        updateProfile(user,{displayName:formField.email})
         setFormField({email: "", password: ""})
-        localStorage.setItem('isLogin',true)
+        sessionStorage.setItem('isLogin',true)
         alert("login Sucessful")
         history("/");
         // ...

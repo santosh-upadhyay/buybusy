@@ -5,7 +5,7 @@ import Product from "./Product";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const ProductDetail = ({ cart, setCart }) => {
+const ProductDetail = ({ cart, setCart,isLogin }) => {
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
@@ -41,18 +41,21 @@ const ProductDetail = ({ cart, setCart }) => {
     // if(ans){
     //   setCart([...cart, obj]);
     // }
+    // if(isLogin)
     setCart([...cart, obj]);
+  // else{
+  //   toast.success("Need To Login First", {
+  //     position: "top-right",
+  //     autoClose: 1500,
+  //     hideProgressBar: false,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //     theme: "dark",
+  //   });
+  // }
     // console.log("Cart element = ", cart);
-    // toast.success("Item added on cart", {
-    //   position: "top-right",
-    //   autoClose: 1500,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    //   theme: "dark",
-    // });
   };
 
   return (
@@ -94,7 +97,7 @@ const ProductDetail = ({ cart, setCart }) => {
         </div>
       </div>
       <h1 className="text-center">Related Products</h1>
-      <Product cart={cart} setCart={setCart} items={relatedProducts} />
+      <Product cart={cart} setCart={setCart} items={relatedProducts} isLogin={isLogin} />
     </>
   );
 };

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Pagination from './Pagination';
-const Product = ({ items, cart, setCart }) => {
+const Product = ({ items, cart, setCart,isLogin }) => {
   // const[add,setAdd] = useState(0);
   const [page,setPage] = useState(1);
   const addToCart = (id, price, title, description, imgSrc) => {
@@ -24,9 +24,12 @@ const Product = ({ items, cart, setCart }) => {
     // if(ans){
     //   setCart([...cart, obj]);
     // }
+if(isLogin)
     setCart([...cart, obj]);
+  else{
+  // alert(" Login first")
     // console.log("Cart element = ", cart);
-    toast.success("Item added on cart", {
+    toast.success("Login First", {
       position: "top-right",
       autoClose: 1500,
       hideProgressBar: false,
@@ -36,6 +39,7 @@ const Product = ({ items, cart, setCart }) => {
       progress: undefined,
       theme: "dark",
     });
+  }
   };
 
   return (

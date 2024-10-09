@@ -11,7 +11,7 @@ function Pagination({products,page,setPpage}) {
   }
   
   return (
-    <div className="App">
+    <div className="app">
      
       {
         products.length>0 && <div className='pagination'>

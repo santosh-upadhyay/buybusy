@@ -18,14 +18,15 @@ const App = () => {
   const [cart, setCart] = useState([])
   const [userName,setUserName]=useState("");
   const[isLogin,setLogin] = useState();
+  // auth.onAuthStateChanged((user)
   useEffect(()=>{
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user)=> {
       if (user) {
         setUserName(user.email);
       }else{
-          setUserName("UserName")
+          setUserName("")
       }
-    const is_Login = localStorage.getItem('isLogin')
+    const is_Login = sessionStorage.getItem('isLogin')
     setLogin(is_Login)
   })
 },[])
@@ -35,7 +36,7 @@ const App = () => {
     <Navbar cart={cart} setData={setData} userName={userName} isLogin={isLogin} setLogin={setLogin}/>
     <Routes>
       <Route path="/" element={<Product cart={cart} setCart={setCart} items={data} />} />
-      <Route path="/product/:id" element={<ProductDetail cart={cart} setCart={setCart} />} />
+      <Route path="/product/:id" element={<ProductDetail cart={cart} setCart={setCart} isLogin={isLogin}/>} />
       <Route path="/search/:term" element={<SearchItem cart={cart} setCart={setCart} />} />
       <Route path='/signUp' element={<SignUp/>}/>
       <Route path='/signIn' element={<SignIn/>}/>
