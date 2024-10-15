@@ -9,15 +9,14 @@ const SearchItem = ({cart, setCart}) => {
   const {term} = useParams();
   const [filterData, setFilterData] = useState([]);
 
-  useEffect(() => {
-    const filteredData = () =>{
-      const data = items.filter((p)=>p.title.toLowerCase().includes(term.toLowerCase()));
-      // console.log(data)
-      setFilterData(data)
-    }
+  const filteredData = () =>{
+    const data = items.filter((p)=>p.title.toLowerCase().includes(term.toLowerCase()));
+    // console.log(data)
+    setFilterData(data)
+  }
 
+  useEffect(() => {
     filteredData();
-    
   }, [term])
   
 
@@ -25,7 +24,6 @@ const SearchItem = ({cart, setCart}) => {
   return (
     <>
     <Product cart={cart} setCart={setCart} items={filterData} />
-    {/* <Pagination products={filterData}/> */}
     </>
    
   )

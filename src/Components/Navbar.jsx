@@ -6,6 +6,8 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 import Select from "react-select";
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "../firebase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const auth = getAuth(app);
 const Navbar = ({ setData, cart, userName, isLogin, setLogin }) => {
 
@@ -80,7 +82,7 @@ const Navbar = ({ setData, cart, userName, isLogin, setLogin }) => {
           <div className="list-inline-item">
             {!isLogin ? (
               <Link to={"/signIn"}>
-                <button className="btn btn-success my1" id="login">Login</button>
+                <button className="btn btn-success my1" id="login">Login/SignUp</button>
               </Link>
             ) : (
               <Link>
@@ -91,8 +93,8 @@ const Navbar = ({ setData, cart, userName, isLogin, setLogin }) => {
             )}
           </div>
 
-         
-          <Link to={"/cart"} className="cart">
+         {!isLogin?
+          (<Link to={"/cart"} className="cart">
             <button type="button" className="btn btn-primary position-relative">
               <BsFillCartCheckFill style={{ fontSize: "1.5rem" }} />
               {/* <GiShoppingCart style={{ fontSize: "1.5rem" }}/> */}
@@ -101,7 +103,19 @@ const Navbar = ({ setData, cart, userName, isLogin, setLogin }) => {
                 <span className="visually-hidden">Cart</span>
               </span>
             </button>
-          </Link>
+          </Link>):
+          (toast.success("Need To Login First", {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          }))
+          }
+
         </div>
 
         {Location.pathname == "/" && (
